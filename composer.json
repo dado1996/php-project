@@ -6,10 +6,16 @@
 			"App\\Controllers\\": "src/app/controllers/",
 			"Config\\": "src/config/",
 			"Router\\": "src/routes/"
-		}
+		},
+		"classmap": [
+			"src/"
+		]
 	},
 	"require": {
 		"vlucas/phpdotenv": "^5.5",
 		"twbs/bootstrap": "^5.3"
-	}
+	},
+	"require-dev": {
+        "phpunit/phpunit": "^10.2"
+    }
 }

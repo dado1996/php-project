@@ -16,6 +16,15 @@ class User extends BaseModel
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function findFirst(int $id) {
+        $sql = "SELECT * FROM users WHERE id = :id";
+        $params = ['id' => $id];
+
+        $statement = $this->connection->prepare($sql, [\PDO::ATTR_CURSOR, \PDO::CURSOR_FWDONLY]);
+        $statement->execute($params);
+        return $statement->fetch(\PDO::FETCH_ASSOC);
+    }
+
     public function create(string $personal_id, string $name, string $email, string $password)
     {
         $sql = "INSERT INTO users (personal_id, name, email, password) VALUES (:personal_id, :name, :email, :password) ";

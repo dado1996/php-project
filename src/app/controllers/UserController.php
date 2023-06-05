@@ -18,12 +18,20 @@ class UserController extends BaseController
         return $this->userModel->findAll();
     }
 
+    public function getFirst(int $id = 0, string $personal_id = '') {
+        return $this->userModel->findFirst($id);
+    }
+
     public function create($body)
     {
-        ['personal_id' => $personal_id, 'name' => $name, 'email' => $email, 'password' => $password] = $body;
-        // var_dump($name, $email, $password);
+        [
+            'personal_id' => $personal_id,
+            'name' => $name,
+            'email' => $email,
+            'password' => $password
+        ] = $body;
 
         $new_password = password_hash($password, PASSWORD_BCRYPT);
-        $this->userModel->create($personal_id, $name, $email, $new_password);
+        return $this->userModel->create($personal_id, $name, $email, $new_password);
     }
 }

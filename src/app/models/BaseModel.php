@@ -14,7 +14,7 @@ class BaseModel
         $username = $_ENV['DB_USERNAME'];
         $password = $_ENV['DB_PASSWORD'];
         $dbname = $_ENV['DB_NAME'];
-        
+
         $connectionInstance = new DatabaseConnection($hostname, $username, $password, $dbname);
         $this->connection = $connectionInstance->getConnection();
     }
